@@ -1,5 +1,7 @@
 describe('empty spec', () => {
   it('passes', () => {
-    cy.visit('https://example.cypress.io')
+    cy.then(() => {
+      expect(Cypress.env('MESSAGE')).be.eq('CI GET ENVIRONMENT WITH SUCCESS')
+    })
   })
 })
