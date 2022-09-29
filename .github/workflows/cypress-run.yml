@@ -17,4 +17,4 @@ jobs:
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         with:
-          env: ${{ secret.CYPRESS_ENV_CI }}
+          env: ${{ secrets.CYPRESS_ENV_CI }}
