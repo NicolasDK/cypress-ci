@@ -10,7 +10,7 @@ jobs:
       - name: Write the cypress.env.json file 📝
         uses: DamianReeves/write-file-action@master
         with:
-          path: /cypress.env.json
+          path: cypress.env.json
           contents: |
             ${{ secrets.CYPRESS_ENV_CI }}
           write-mode: append
