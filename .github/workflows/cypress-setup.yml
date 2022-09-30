@@ -15,8 +15,26 @@ jobs:
              ${{ env.CYPRESS_ENV_CI }}, "teste": "preenchimento"
           write-mode: append
 
-      - name: Print environment
+      - name: Print ${{ secrets.CYPRESS_ENV_CI }}
+        run: cat ${{ secrets.CYPRESS_ENV_CI }}
+
+      - name: Print ${{ env.CYPRESS_ENV_CI }}
         run: cat ${{ env.CYPRESS_ENV_CI }}
+
+      - name: Print $secrets.CYPRESS_ENV_CI
+        run: cat $secrets.CYPRESS_ENV_CI
+
+      - name: Print $env.CYPRESS_ENV_CI
+        run: cat $env.CYPRESS_ENV_CI
+
+      - name: Print secrets.CYPRESS_ENV_CI
+        run: cat secrets.CYPRESS_ENV_CI
+
+      - name: Print env.CYPRESS_ENV_CI
+        run: cat env.CYPRESS_ENV_CI
+
+      - name: Print $CYPRESS_ENV_CI
+        run: cat $CYPRESS_ENV_CI
 
       - name: Print file
         run: cat cypress.env.json
