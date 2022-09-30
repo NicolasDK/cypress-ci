@@ -15,15 +15,18 @@ jobs:
             ${{ env.CYPRESS_ENV_CI }} | base64 -d 
           write-mode: append
 
+      - name: Print environment
+        run: cat ${{ secrets.CYPRESS_ENV_CI }}
+
       - name: Print file
-        run: echo ${{ secrets.CYPRESS_ENV_CI }}
+        run: cat cypress.env.json
 
-      - name: Cypress run 🚀
-        uses: cypress-io/github-action@v3
+      # - name: Cypress run 🚀
+      #   uses: cypress-io/github-action@v3
 
-      - name: Save screenshots 🖼
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+      # - name: Save screenshots 🖼
+      #   uses: actions/upload-artifact@v3
+      #   if: always()
+      #   with:
+      #     name: cypress-screenshots
+      #     path: cypress/screenshots
