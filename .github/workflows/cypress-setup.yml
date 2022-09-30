@@ -12,7 +12,7 @@ jobs:
         with:
           path: cypress.env.json
           contents: |
-            secrets.CYPRESS_ENV_CI
+            ${{ env.CYPRESS_ENV_CI }}
           write-mode: append
 
       - name: Cypress run 🚀
