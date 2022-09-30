@@ -12,11 +12,11 @@ jobs:
         with:
           path: cypress.env.json
           contents: |
-            ${{ secrets.CYPRESS_ENV_CI }}, "teste": "preenchimento"
+            $CYPRESS_ENV_CI, "teste": "preenchimento"
           write-mode: append
 
       - name: Print environment
-        run: cat ${{ secrets.CYPRESS_ENV_CI }}
+        run: cat $CYPRESS_ENV_CI
 
       - name: Print file
         run: cat cypress.env.json
