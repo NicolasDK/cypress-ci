@@ -15,6 +15,9 @@ jobs:
             ${{ env.CYPRESS_ENV_CI }}
           write-mode: append
 
+      - name: Print file
+        run: echo ${{ env.CYPRESS_ENV_CI }}
+
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
 
