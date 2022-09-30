@@ -7,19 +7,19 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Write the cypress.env.json file 📝
-        uses: DamianReeves/write-file-action@master
-        with:
-          path: cypress.env.json
-          contents: |
-             ${{ env.CYPRESS_ENV_CI }}, "teste": "preenchimento"
-          write-mode: append
+      # - name: Write the cypress.env.json file 📝
+      #   uses: DamianReeves/write-file-action@master
+      #   with:
+      #     path: cypress.env.json
+      #     contents: |
+      #        ${{ env.CYPRESS_ENV_CI }}, "teste": "preenchimento"
+      #     write-mode: append
 
-      - name: Print ${{ secrets.CYPRESS_ENV_CI }}
-        run: cat ${{ secrets.CYPRESS_ENV_CI }}
+      # - name: Print ${{ secrets.CYPRESS_ENV_CI }}
+      #   run: cat ${{ secrets.CYPRESS_ENV_CI }}
 
-      - name: Print ${{ env.CYPRESS_ENV_CI }}
-        run: cat ${{ env.CYPRESS_ENV_CI }}
+      # - name: Print ${{ env.CYPRESS_ENV_CI }}
+      #   run: cat ${{ env.CYPRESS_ENV_CI }}
 
       # - name: Print $secrets.CYPRESS_ENV_CI
       #   run: cat $secrets.CYPRESS_ENV_CI
@@ -33,14 +33,14 @@ jobs:
       # - name: Print env.CYPRESS_ENV_CI
       #   run: cat env.CYPRESS_ENV_CI
 
-      - name: Print $CYPRESS_ENV_CI
-        run: cat $CYPRESS_ENV_CI
+      # - name: Print $CYPRESS_ENV_CI
+      #   run: cat $CYPRESS_ENV_CI
 
-      - name: Print file
-        run: cat cypress.env.json
+      # - name: Print file
+      #   run: cat cypress.env.json
 
-      # - name: Cypress run 🚀
-      #   uses: cypress-io/github-action@v3
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
 
       # - name: Save screenshots 🖼
       #   uses: actions/upload-artifact@v3
