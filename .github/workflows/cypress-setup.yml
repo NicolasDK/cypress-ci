@@ -13,7 +13,7 @@ jobs:
         with:
           path: cypress.env.json
           contents: |
-             ${{ env.CYPRESS_ENV_CI }}, "teste": "preenchimento"
+             ${{ secrets.CYPRESS_ENV_CI }}
           write-mode: append
 
       # - name: Print ${{ secrets.CYPRESS_ENV_CI }}
