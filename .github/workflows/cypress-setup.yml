@@ -8,13 +8,13 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Write the cypress.env.json file 📝
-        uses: DamianReeves/write-file-action@master
-        with:
-          path: cypress.env.json
-          contents: |
-             ${{ secrets.CYPRESS_ENV_CI }}
-          write-mode: append
+#       - name: Write the cypress.env.json file 📝
+#         uses: DamianReeves/write-file-action@master
+#         with:
+#           path: cypress.env.json
+#           contents: |
+#              ${{ secrets.CYPRESS_ENV_CI }}
+#           write-mode: append
 
       # - name: Print ${{ secrets.CYPRESS_ENV_CI }}
       #   run: cat ${{ secrets.CYPRESS_ENV_CI }}
@@ -37,8 +37,8 @@ jobs:
       # - name: Print $CYPRESS_ENV_CI
       #   run: cat $CYPRESS_ENV_CI
 
-      - name: Print file
-        run: cat cypress.env.json
+#       - name: Print file
+#         run: cat cypress.env.json
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
