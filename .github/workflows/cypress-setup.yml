@@ -19,7 +19,7 @@ jobs:
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
-          CYPRESS_MESSAGE: ${{ env.CYPRESS_MESSAGE }}
+          CYPRESS_MESSAGE: ${{ dev.CYPRESS_MESSAGE }}
 
       # - name: Save screenshots 🖼
       #   uses: actions/upload-artifact@v3
