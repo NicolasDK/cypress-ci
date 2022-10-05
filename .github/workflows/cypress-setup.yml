@@ -2,6 +2,7 @@ name: ci
 on: [push]
 jobs:
   tests:
+    environment: dev
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
@@ -18,7 +19,7 @@ jobs:
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+          CYPRESS_MESSAGE: ${{ env.CYPRESS_MESSAGE }}
 
       # - name: Save screenshots 🖼
       #   uses: actions/upload-artifact@v3
