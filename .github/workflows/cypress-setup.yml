@@ -21,21 +21,21 @@ jobs:
         env:
           CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
-          command: npm run test:batch-1
+          command: npm run run-1
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
           CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
-          command: npm run test:batch-2
+          command: npm run run-2
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
           CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
-          command: npm run test:batch-3
+          command: npm run run-3
 
 
       # - name: Save screenshots 🖼
