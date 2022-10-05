@@ -20,6 +20,23 @@ jobs:
         uses: cypress-io/github-action@v3
         env:
           CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        with:
+          command: npm run test:batch-1
+
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
+        env:
+          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        with:
+          command: npm run test:batch-2
+
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
+        env:
+          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        with:
+          command: npm run test:batch-3
+
 
       # - name: Save screenshots 🖼
       #   uses: actions/upload-artifact@v3

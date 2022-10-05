@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run-1": "npx cypress run -s cypress/e2e/environment-variable.cy.js",
+    "run-2": "npx cypress run -s cypress/e2e/environment-variable.cy.js",
+    "run-3": "npx cypress run -s cypress/e2e/environment-variable.cy.js"
   },
   "keywords": [],
   "author": "",
