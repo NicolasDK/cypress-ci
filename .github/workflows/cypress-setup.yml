@@ -1,20 +1,13 @@
-name: ci
+name: cypress-ci
 on: [push]
 jobs:
-  tests:
+
+  cypress-run-1:
     environment: dev
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
-
-#       - name: Write the cypress.env.json file 📝
-#         uses: DamianReeves/write-file-action@master
-#         with:
-#           path: cypress.env.json
-#           contents: |
-#              ${{ secrets.CYPRESS_ENV_CI }}
-#           write-mode: append
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
@@ -23,6 +16,13 @@ jobs:
         with:
           command: npm run run-1
 
+  cypress-run-2:
+    environment: dev
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
@@ -30,17 +30,16 @@ jobs:
         with:
           command: npm run run-2
 
+  cypress-run-3:
+    environment: dev
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
         env:
           CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
           command: npm run run-3
-
-
-      # - name: Save screenshots 🖼
-      #   uses: actions/upload-artifact@v3
-      #   if: always()
-      #   with:
-      #     name: cypress-screenshots
-      #     path: cypress/screenshots
