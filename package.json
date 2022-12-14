@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-1": "npx cypress run -s cypress/e2e/environment-variable.cy.js",
-    "run-2": "npx cypress run -s cypress/e2e/environment-variable.cy.js",
-    "run-3": "npx cypress run -s cypress/e2e/environment-variable.cy.js"
+    "run-1": "npx cypress run -s cypress/e2e/job-1/*",
+    "run-2": "npx cypress run -s cypress/e2e/job-2/*",
+    "run-3": "npx cypress run -s cypress/e2e/job-3/*"
   },
   "keywords": [],
   "author": "",
