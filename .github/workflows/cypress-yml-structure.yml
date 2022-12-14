@@ -6,8 +6,8 @@ env:
   containers: ${{ secrets.CONTAINERS }}
 
 jobs:
-# cypress-run 1
-  cypress-run: 
+# cypress-run-containers-1
+  cypress-run-containers-1: 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -19,7 +19,7 @@ jobs:
         if: ${{env.containers == '[1]'}}
 
       - name: Cypress run
-        if: ${{env.containers == '[1, 2, 3]'}}
+        if: ${{env.containers == '[1]'}}
         uses: cypress-io/github-action@v4
         with:
           record: true
@@ -41,7 +41,7 @@ jobs:
         if: ${{env.containers == '[1, 2]'}}
 
       - name: Cypress run
-        if: ${{env.containers == '[1, 2, 3]'}}
+        if: ${{env.containers == '[1, 2]'}}
         uses: cypress-io/github-action@v4
         with:
           record: true
@@ -75,7 +75,7 @@ jobs:
 # generate-report
   generate-report:
     if: ${{ always() }}
-    needs: cypress-run
+    needs: [cypress-run-containers-1, cypress-run-containers-2, cypress-run-containers-3]
     runs-on: ubuntu-latest
     steps:
       - name: Generate allure report
