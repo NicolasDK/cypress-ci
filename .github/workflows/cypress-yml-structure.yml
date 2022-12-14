@@ -22,3 +22,19 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+  generate-report:
+    needs: test
+    runs-on: ubuntu-latest
+    name: gerando relatorio
+    steps:
+      - name: escrevendo console
+        run: echo "Gerando relatorio de execução"
+    
+  notify-report:
+    needs: generate-report
+    runs-on: ubuntu-latest
+    name: notificando relatorio no slack
+    steps:
+      - name: escrevendo console
+        run: echo "Gerando relatorio de execução"
