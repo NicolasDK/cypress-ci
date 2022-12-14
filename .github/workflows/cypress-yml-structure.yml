@@ -10,7 +10,7 @@ jobs:
 
   print-variable:
     runs-on: ubuntu-latest
-    if: ${{containers}} == 1
+    if: $containers == 1
     steps:
       - name: Print-variable
         run: echo "CONTAINERS >>> 2 | env >>> $containers"
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       containers: 1
-    if: ${{containers}} == 2
+    if: $containers == 2
     steps:
       - name: Slack Notification
         run: echo "CONTAINERS >>> 2 | env >>> $containers"
