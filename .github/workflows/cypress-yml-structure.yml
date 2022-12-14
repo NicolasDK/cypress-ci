@@ -6,7 +6,6 @@ jobs:
 
   print-variable:
     if: ${{ always() }}
-    needs: generate-report
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification
@@ -14,6 +13,7 @@ jobs:
 
   cypress-run: 
     runs-on: ubuntu-latest
+    needs: print-variable
     strategy:
       fail-fast: false
       matrix:
