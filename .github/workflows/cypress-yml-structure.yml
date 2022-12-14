@@ -13,8 +13,8 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        # if: ${{ env.DAY_OF_WEEK == '2' }}
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        if: ${{ env.DAY_OF_WEEK == '1' }}
+        run: echo "$Greeting $First_Name. Today is 1"
         env:
           First_Name: Mona
 
