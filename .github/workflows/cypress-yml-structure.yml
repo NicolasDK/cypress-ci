@@ -4,16 +4,16 @@ on: [push]
 
 env:
   DAY_OF_WEEK: ${{ secrets.CONTAINERS }}
-  containers: 1
+  containers: ${{ secrets.CONTAINERS }}
 
 jobs:
   greeting_job:
+    if: ${{ env.DAY_OF_WEEK == '1' }}
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        if: ${{ env.DAY_OF_WEEK == '1' }}
         run: echo "$Greeting $First_Name. Today is 1"
         env:
           First_Name: Mona 
