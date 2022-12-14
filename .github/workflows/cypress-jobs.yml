@@ -1,4 +1,4 @@
-name: cypress-ci
+name: JOBS
 on: [push]
 jobs:
 
@@ -11,8 +11,6 @@ jobs:
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
           command: npm run run-1
 
@@ -25,8 +23,6 @@ jobs:
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
           command: npm run run-2
 
@@ -39,7 +35,5 @@ jobs:
 
       - name: Cypress run 🚀
         uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
         with:
           command: npm run run-3
