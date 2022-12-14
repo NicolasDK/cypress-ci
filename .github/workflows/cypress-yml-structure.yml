@@ -19,7 +19,14 @@ jobs:
 #           First_Name: Mona
 
   print-variable:
-    if: env.containers == '2'
+    if: secrets.containers == '2'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print-variable
+        run: echo "CONTAINERS >>> 2 | env >>> $containers"
+
+  print-variable1:
+    if: ${{secrets.containers == '2'}}
     runs-on: ubuntu-latest
     steps:
       - name: Print-variable
