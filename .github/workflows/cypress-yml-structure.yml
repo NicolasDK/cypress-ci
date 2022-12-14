@@ -7,7 +7,7 @@ env:
 
 jobs:
   greeting_job:
-    if: DAY_OF_WEEK == '1' 
+    if: ${{DAY_OF_WEEK == '[1, 2]'}}
     runs-on: ubuntu-latest
     steps:
       - name: "Say Hello Mona it's Monday"
