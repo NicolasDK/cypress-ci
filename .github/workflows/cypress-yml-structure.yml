@@ -3,27 +3,27 @@ name: MATRIZ
 on: [push]
 
 env:
-  DAY_OF_WEEK: 1
+  DAY_OF_WEEK: ${{ secrets.CONTAINERS }}
   containers: 1
 
 jobs:
-#   greeting_job:
-#     runs-on: ubuntu-latest
-#     env:
-#       Greeting: Hello
-#     steps:
-#       - name: "Say Hello Mona it's Monday"
-#         if: ${{ env.DAY_OF_WEEK == '2' }}
-#         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-#         env:
-#           First_Name: Mona
-
-  print-variable:
-    if: secrets.containers == '2'
+  greeting_job:
     runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
     steps:
-      - name: Print-variable
-        run: echo "CONTAINERS >>> 2 | env >>> $containers"
+      - name: "Say Hello Mona it's Monday"
+        # if: ${{ env.DAY_OF_WEEK == '2' }}
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
+
+  # print-variable:
+  #   if: secrets.containers == '2'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Print-variable
+  #       run: echo "CONTAINERS >>> 2 | env >>> $containers"
 
   # print-variable1:
   #   if: ${{secrets.containers == '2'}}
