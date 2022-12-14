@@ -8,7 +8,7 @@ env:
 
 jobs:
   greeting_job:
-    if: ${{ DAY_OF_WEEK == '1' }}
+    if: ${{ $DAY_OF_WEEK == '1' }}
     runs-on: ubuntu-latest
     env:
       Greeting: Hello
