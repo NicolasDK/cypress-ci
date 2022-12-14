@@ -1,45 +1,39 @@
-name: cypress-ci
+name: Parallel Jobs Cypress Tests
 on: [push]
 jobs:
 
   cypress-run-1:
     environment: dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cypress run 🚀
-        uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        uses: cypress-io/github-action@v4
         with:
           command: npm run run-1
 
   cypress-run-2:
     environment: dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cypress run 🚀
-        uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        uses: cypress-io/github-action@v4
         with:
           command: npm run run-2
 
   cypress-run-3:
     environment: dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cypress run 🚀
-        uses: cypress-io/github-action@v3
-        env:
-          CYPRESS_MESSAGE: ${{ secrets.CYPRESS_MESSAGE }}
+        uses: cypress-io/github-action@v4
         with:
           command: npm run run-3
