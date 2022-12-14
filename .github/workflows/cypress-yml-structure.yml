@@ -9,7 +9,6 @@ jobs:
 # cypress-run 1
   cypress-run: 
     runs-on: ubuntu-latest
-    if: env.containers == '[1]'
     strategy:
       fail-fast: false
       matrix:
@@ -17,10 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        # if: ${{env.containers == '[1]'}}
+        if: ${{env.containers == '[1]'}}
 
       - name: Cypress run
-        # if: ${{env.containers == '[1, 2, 3]'}}
+        if: ${{env.containers == '[1, 2, 3]'}}
         uses: cypress-io/github-action@v4
         with:
           record: true
@@ -29,49 +28,49 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-# # cypress-run 2
-#   cypress-run-containers-2: 
-#     runs-on: ubuntu-latest
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         containers: [1, 2]
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#         if: ${{env.containers == '[1, 2]'}}
+# cypress-run 2
+  cypress-run-containers-2: 
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        if: ${{env.containers == '[1, 2]'}}
 
-#       - name: Cypress run
-#         if: ${{env.containers == '[1, 2, 3]'}}
-#         uses: cypress-io/github-action@v4
-#         with:
-#           record: true
-#           containers: true
-#         env:
-#           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cypress run
+        if: ${{env.containers == '[1, 2, 3]'}}
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+          containers: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-# # cypress-run 3
-#   cypress-run-containers-3: 
-#     runs-on: ubuntu-latest
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         containers: [1, 2, 3]
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#         if: ${{env.containers == '[1, 2, 3]'}}
+# cypress-run 3
+  cypress-run-containers-3: 
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        if: ${{env.containers == '[1, 2, 3]'}}
 
-#       - name: Cypress run
-#         if: ${{env.containers == '[1, 2, 3]'}}
-#         uses: cypress-io/github-action@v4
-#         with:
-#           record: true
-#           containers: true
-#         env:
-#           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cypress run
+        if: ${{env.containers == '[1, 2, 3]'}}
+        uses: cypress-io/github-action@v4
+        with:
+          record: true
+          containers: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 # generate-report
   generate-report:
