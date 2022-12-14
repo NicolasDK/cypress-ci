@@ -24,6 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
   generate-report:
+    if: ${{ always() }}
     needs: test
     runs-on: ubuntu-latest
     name: gerando relatorio
@@ -32,6 +33,7 @@ jobs:
         run: echo "Gerando relatorio de execução"
     
   notify-report:
+    if: ${{ always() }}
     needs: generate-report
     runs-on: ubuntu-latest
     name: notificando relatorio no slack
