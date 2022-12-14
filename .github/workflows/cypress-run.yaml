@@ -4,5 +4,5 @@ on:
       - "*"
   workflow_dispatch:
 jobs:
-  cypress-run:  
-    uses: .github/workflows/cypress-setup.yaml@old-runners
+  cypress-run:
+    uses: nicolas-tf/cypress-ci/.github/workflows/cypress-setup.yaml@old-runners
