@@ -3,7 +3,7 @@ name: MATRIZ
 on: [push]
 
 env:
-  containers: 1
+  DAY_OF_WEEK: Monday
 
 jobs:
 
@@ -13,14 +13,14 @@ jobs:
     if: ${{env.containers}} == 1
     steps:
       - name: Slack Notification
-        run: echo "CONTAINERS >>> 1 | env >>> $env.containers"
+        run: echo "Today is $DAY_OF_WEEK!"
 
-  print-variable2:
-    runs-on: ubuntu-latest
-    if: ${{env.containers}} == 2
-    steps:
-      - name: Slack Notification
-        run: echo "CONTAINERS >>> 2 | env >>> $env.containers"
+  # print-variable2:
+  #   runs-on: ubuntu-latest
+  #   if: ${{env.containers}} == 2
+  #   steps:
+  #     - name: Slack Notification
+  #       run: echo "CONTAINERS >>> 2 | env >>> $env.containers"
 
   # cypress-run: 
   #   runs-on: ubuntu-latest
