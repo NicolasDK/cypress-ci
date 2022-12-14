@@ -5,4 +5,4 @@ on:
   workflow_dispatch:
 jobs:
   cypress-run:  
-    uses: ./cypress-setup.yaml@old-runners
+    uses: .github/workflows/cypress-setup.yaml@old-runners
