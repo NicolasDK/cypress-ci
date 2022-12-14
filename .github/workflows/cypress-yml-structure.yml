@@ -16,7 +16,7 @@ jobs:
         if: ${{ env.DAY_OF_WEEK == '1' }}
         run: echo "$Greeting $First_Name. Today is 1"
         env:
-          First_Name: Mona
+          First_Name: Mona 
 
   # print-variable:
   #   if: secrets.containers == '2'
