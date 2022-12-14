@@ -25,12 +25,12 @@ jobs:
       - name: Print-variable
         run: echo "CONTAINERS >>> 2 | env >>> $containers"
 
-  print-variable1:
-    if: ${{secrets.containers == '2'}}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print-variable
-        run: echo "CONTAINERS >>> 2 | env >>> $containers"
+  # print-variable1:
+  #   if: ${{secrets.containers == '2'}}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Print-variable
+  #       run: echo "CONTAINERS >>> 2 | env >>> $containers"
 
   # print-variable2:
   #   runs-on: ubuntu-latest
