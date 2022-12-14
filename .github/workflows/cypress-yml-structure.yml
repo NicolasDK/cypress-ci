@@ -3,8 +3,7 @@ name: MATRIZ
 on: [push]
 
 jobs:
-  test:
-    name: Cypress run
+  cypress-run:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -25,18 +24,16 @@ jobs:
     
   generate-report:
     if: ${{ always() }}
-    needs: test
+    needs: cypress-run
     runs-on: ubuntu-latest
-    name: gerando relatorio
     steps:
-      - name: escrevendo console
+      - name: Generate allure report
         run: echo "Gerando relatorio de execução"
     
   notify-report:
     if: ${{ always() }}
     needs: generate-report
     runs-on: ubuntu-latest
-    name: notificando relatorio no slack
     steps:
-      - name: escrevendo console
-        run: echo "Gerando relatorio de execução"
+      - name: Slack Notification
+        run: echo "Notificando relatorio no slack"
