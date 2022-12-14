@@ -1,12 +1,6 @@
 name: MATRIZ
 
-on:
-  workflow_call:
-    inputs:
-      containers:
-        required: false
-        type: string
-        default: '1'
+on: [push]
 
 jobs:
   cypress-run:
@@ -14,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: ["${{ inputs.containers }}"]
+        containers: ["1, 2, 3"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
