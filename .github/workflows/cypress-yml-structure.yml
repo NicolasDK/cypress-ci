@@ -3,8 +3,16 @@ name: MATRIZ
 on: [push]
 
 jobs:
+
+  print-variable:
+    if: ${{ always() }}
+    needs: generate-report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notification
+        run: echo ${{ secrets.CONTAINERS }}
+
   cypress-run: 
-    if: ${{ secrets.CONTAINERS }} == 1
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
