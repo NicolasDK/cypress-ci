@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   cypress-run: 
-    if: secrets.CONTAINERS == 1
+    if: ${{ secrets.CONTAINERS }} == 1
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
