@@ -5,18 +5,18 @@ on: [push]
 jobs:
 
   print-variable:
-    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification
-        run: echo ${{ secrets.CONTAINERS }} variable
+        if: ${{ secrets.CONTAINERS == 0 }}
+        run: echo value >>> ${{ secrets.containers }} variable
 
   print-variable2:
-    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Slack Notification
-        run: echo ${{ secrets.containers }} variable
+        if: ${{ secrets.CONTAINERS == 1 }}
+        run: echo value >>> ${{ secrets.containers }} variable
 
   # cypress-run: 
   #   runs-on: ubuntu-latest
