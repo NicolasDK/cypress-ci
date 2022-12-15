@@ -46,6 +46,7 @@ jobs:
           
   log-artefact:
     if: always()
+    needs: cypress-run
     runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
