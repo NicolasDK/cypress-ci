@@ -12,11 +12,12 @@ jobs:
       matrix:
         containers: [1, 2]
     steps:
-      - name: diretorio 1
-        run: pwd
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: diretorio 1
+        run: pwd
 
       - name: Cypress run
         uses: cypress-io/github-action@v4
@@ -28,9 +29,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: diretorio 2
+        if: always()
         run: pwd
 
       - name: Archive code coverage results
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: allure-results
