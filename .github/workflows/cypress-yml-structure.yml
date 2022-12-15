@@ -23,6 +23,12 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: allure-results/
     
 # generate-report
   generate-report:
@@ -30,6 +36,11 @@ jobs:
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: allure-results
+        
       - name: Generate allure report
         run: echo "Gerando relatorio de execução"
 
