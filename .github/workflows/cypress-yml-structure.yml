@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1]
     steps:
 
       - name: Checkout
@@ -40,19 +40,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results
+          name: allure-results-${{ toJSON(job) }}
           path: ./allure-results
-
-          
-  # log-artefact:
-  #   if: always()
-  #   needs: cypress-run
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Download a single artifact
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: allure-results
 
 # generate-report
   generate-report:
@@ -60,11 +49,15 @@ jobs:
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:
-      - name: Download a single artifact
+
+      - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-        with:
-          name: allure-results
-        
+
+      - name: directory        
+        run: |
+          ls
+          cd /allure-results
+
       - name: Generate allure report
         run: echo "Gerando relatorio de execução"
 
@@ -94,11 +87,11 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
 
-# notify-report
-  notify-report:
-    if: always()
-    needs: generate-report
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Notification
-        run: echo "Notificando relatorio no slack"
+# # notify-report
+#   notify-report:
+#     if: always()
+#     needs: generate-report
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Slack Notification
+#         run: echo "Notificando relatorio no slack"
