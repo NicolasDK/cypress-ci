@@ -51,27 +51,30 @@ jobs:
     steps:
 
       - name: Download all workflow run artifacts
+        if: always()
         uses: actions/download-artifact@v3
 
-      - name: directory        
+      - name: directory     
+        if: always()   
         run: |
-          ls
           cd /allure-results
+          ls
 
       - name: Generate allure report
+        if: always()
         run: echo "Gerando relatorio de execução"
 
       - name: Get Allure history
-        uses: actions/checkout@v2
         if: always()
+        uses: actions/checkout@v2
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
 
       - name: Test marketplace action
-        uses: simple-elf/allure-report-action@master
         if: always()
+        uses: simple-elf/allure-report-action@master
         id: allure-report
         with:
           allure_results: allure-results
