@@ -41,8 +41,6 @@ jobs:
 
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-        with:
-          path: allure-results
 
       - name: Get Allure history
         uses: actions/checkout@v3
