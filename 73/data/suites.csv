@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Dec 15 19:38:25 GMT 2022","Thu Dec 15 19:38:25 GMT 2022","541","","empty spec 1","","","","passes 1",""
+"passed","Thu Dec 15 19:38:30 GMT 2022","Thu Dec 15 19:38:30 GMT 2022","540","","empty spec 3","","","","passes 3",""
+"passed","Thu Dec 15 19:38:36 GMT 2022","Thu Dec 15 19:38:36 GMT 2022","540","","empty spec 5","","","","passes 5",""
+"passed","Thu Dec 15 19:38:27 GMT 2022","Thu Dec 15 19:38:28 GMT 2022","541","","empty spec 2","","","","passes 2",""
+"passed","Thu Dec 15 19:38:33 GMT 2022","Thu Dec 15 19:38:33 GMT 2022","540","","empty spec 4","","","","passes 4",""
