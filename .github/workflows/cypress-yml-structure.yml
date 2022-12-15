@@ -46,7 +46,6 @@ jobs:
           
   log-artefact:
     if: always()
-    needs: generate-report
     runs-on: ubuntu-latest
     steps:
       - name: Download a single artifact
