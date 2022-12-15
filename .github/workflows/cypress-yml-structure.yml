@@ -12,6 +12,9 @@ jobs:
       matrix:
         containers: [1, 2]
     steps:
+      - name: diretorio 1
+        run: echo pwd
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -24,12 +27,15 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: diretorio 2
+        run: echo pwd
+
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: allure-results
-          path: allure-results/
-    
+          path: ./allure-results
+
 # generate-report
   generate-report:
     if: always()
