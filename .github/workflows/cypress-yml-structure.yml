@@ -33,7 +33,7 @@ jobs:
       - name: diretorio 1.2
         if: always()
         run: |
-          cd /home/runner/work/cypress-ci/cypress-ci
+          cd allure-results
           ls
 
       - name: Archive code coverage results
