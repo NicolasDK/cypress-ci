@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: ${{ fromJson("env.containers") }}
+        containers: ${{ fromJson("$containers") }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
