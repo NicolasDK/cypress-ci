@@ -2,16 +2,13 @@ name: MATRIZ
 
 on: [push]
 
-env:
-  containers: "[1, 2]"
-
 jobs:
   cypress-run: 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        containers: ${{ fromJson(env.containers) }}
+        containers: ${{ fromJson([1, 2]) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
