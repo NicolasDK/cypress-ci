@@ -1,6 +1,6 @@
 
-describe('empty spec 1', () => {
-  it('passes 1', () => {
+describe('empty spec 11', () => {
+  it('passes 11', () => {
     
     cy.then(() => {
       expect('CI DATA').be.eq('CI DATA')
