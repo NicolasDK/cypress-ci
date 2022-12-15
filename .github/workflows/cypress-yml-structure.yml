@@ -16,9 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: diretorio 1
-        run: pwd
-
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
@@ -28,9 +25,14 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: diretorio 2
-        if: always()
-        run: pwd
+      - name: diretorio 1.1
+        run: |
+          ls
+
+      - name: diretorio 1.2
+        run: |
+          cd /home/runner/work/cypress-ci/cypress-ci
+          ls
 
       - name: Archive code coverage results
         if: always()
