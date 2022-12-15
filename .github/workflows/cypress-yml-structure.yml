@@ -13,7 +13,7 @@ jobs:
         containers: [1, 2]
     steps:
       - name: diretorio 1
-        run: echo pwd
+        run: pwd
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: diretorio 2
-        run: echo pwd
+        run: pwd
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
