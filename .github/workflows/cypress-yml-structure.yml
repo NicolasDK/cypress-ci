@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results-${{ toJSON(job) }}
+          name: allure-results
           path: ./allure-results
 
 # generate-report
