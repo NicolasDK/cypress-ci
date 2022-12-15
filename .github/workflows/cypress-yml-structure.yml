@@ -6,12 +6,12 @@ env:
   containers: "[1, 2, 3]"
 
 jobs:
-  cypress-run-containers-1: 
+  cypress-run: 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        containers: ${{ fromJson("$env.containers") }}
+        containers: ${{ fromJson("env.containers") }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,8 +27,8 @@ jobs:
     
 # generate-report
   generate-report:
-    if: ${{ always() }}
-    needs: [cypress-run-containers-1, cypress-run-containers-2, cypress-run-containers-3]
+    if: always()
+    needs: cypress-run
     runs-on: ubuntu-latest
     steps:
       - name: Generate allure report
@@ -36,7 +36,7 @@ jobs:
 
 # notify-report
   notify-report:
-    if: ${{ always() }}
+    if: always()
     needs: generate-report
     runs-on: ubuntu-latest
     steps:
