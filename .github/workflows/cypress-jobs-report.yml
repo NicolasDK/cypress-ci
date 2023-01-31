@@ -1,29 +1,18 @@
-name: MATRIZ
-
+name: JOBS
 on: [push]
-
 jobs:
 
-# cypress run
-  cypress-run: 
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
+  cypress-run-1:
+    environment: dev
+    runs-on: ubuntu-20.04
     steps:
-
-      - name: Checkout
+      - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
         with:
-          record: true
-          parallel: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          command: npm run run-1
 
       - name: Archive code coverage results
         if: always()
@@ -32,7 +21,44 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-# generate-report
+  cypress-run-2:
+    environment: dev
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
+        with:
+          command: npm run run-2
+
+      - name: Archive code coverage results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: ./allure-results/
+
+  cypress-run-3:
+    environment: dev
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Cypress run 🚀
+        uses: cypress-io/github-action@v3
+        with:
+          command: npm run run-3
+
+      - name: Archive code coverage results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: ./allure-results/
+
   generate-report:
     if: always()
     needs: cypress-run
@@ -65,12 +91,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-
-# notify-report
-  notify-report:
-    if: always()
-    needs: generate-report
-    runs-on: ubuntu-latest
-    steps:
-      - name: Slack Notification
-        run: echo "Notificando relatorio no slack"
