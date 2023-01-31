@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run-1": "npx cypress run -s cypress/e2e/job-1/",
+    "run-2": "npx cypress run -s cypress/e2e/job-2/",
+    "run-3": "npx cypress run -s cypress/e2e/job-3/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.34.0",
     "cypress": "^10.8.0"
   }
 }
