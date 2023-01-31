@@ -61,7 +61,7 @@ jobs:
 
   generate-report:
     if: always()
-    needs: cypress-run
+    needs: [cypress-run-1, cypress-run-2, cypress-run-3]
     runs-on: ubuntu-latest
     steps:
 
