@@ -79,7 +79,7 @@ jobs:
         shell: bash
         # if: jobs.cypress-run-2 
         run : |
-          echo "somente 3 job: ${{(${{needs.cypress-run-2.outputs.output1}} == success && ${{needs.cypress-run-3.outputs.output1}} == success) && success || failure}}"
+          echo "somente 3 job: ${{(needs.cypress-run-2.outputs.output1 == success && needs.cypress-run-3.outputs.output1 == success) && success || failure}}"
 
       # - name: job2 
       #   if: jobs.cypress-run-2
