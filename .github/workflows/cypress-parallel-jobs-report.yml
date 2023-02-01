@@ -48,7 +48,7 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-      - id: Status Job
+      - id: status_job
         run: echo "::set-output name=status::${{job.status}}"
 
   cypress-run-3:
@@ -72,7 +72,7 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-      - id: Status Job
+      - id: status_job
         run: echo "::set-output name=status::${{job.status}}"
 
   generate-report:
