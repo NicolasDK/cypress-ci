@@ -72,20 +72,30 @@ jobs:
     steps:
       - name: Status Job
         shell: bash
-        run: |
-          echo "status_test: ${{ env.TEST_STATUS }}"
-          echo "status: ${{ job.status }}"
+        # if: jobs.cypress-run-2 
+        run : |
+          echo "somente 1 job: ${{jobs.cypress-run-2}}"
 
-          echo "-------------------------"
-          echo "get status by jobs :"
-          echo cypress_2:${{needs.cypress-run-2.conclusion}}
-          echo cypress_3:${{needs.cypress-run-3.conclusion}}
+      # - name: job2 
+      #   if: jobs.cypress-run-2
+      #   run : |
+      #     echo "somente 1 job: ${{jobs.cypress-run-2}}"
+      #   run: |
+      #     echo "status_test: ${{ env.TEST_STATUS }}"
+      #     echo "status: ${{ job.status }}"
 
-          echo "-------------------------"
-          echo "fake ternary :"
-          echo "${{needs.cypress-run-2.conclusion == 'success' && 'success' || 'failure' }}"
-          echo "${{needs.cypress-run-2.conclusion && needs.cypress-run-2.conclusion == 'success' && 'success' || 'failure' }}"
-          echo "${{(needs.cypress-run-2.conclusion && needs.cypress-run-2.conclusion) == 'success' && 'success' || 'failure' }}"
+      #     echo "-------------------------"
+      #     echo "get status by jobs :"
+      #     echo cypress_2:${{needs.cypress-run-2.conclusion}}
+      #     echo cypress_3:${{needs.cypress-run-3.conclusion}}
+
+      #     echo "-------------------------"
+      #     echo "fake ternary :"
+      #     echo "${{needs.cypress-run-2.conclusion == 'success' && 'success' || 'failure' }}"
+      #     echo "${{needs.cypress-run-2.conclusion && needs.cypress-run-3.conclusion == 'success' && 'success' || 'failure' }}"
+          
+      #     echo only expression to return true or false
+      #     echo "${{(needs.cypress-run-2.conclusion && needs.cypress-run-3.conclusion)}}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
       # - name: Deploy to GitHub Pages
