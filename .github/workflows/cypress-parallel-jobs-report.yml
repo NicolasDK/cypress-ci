@@ -75,6 +75,7 @@ jobs:
         run: |
           echo "status_test: ${{ env.TEST_STATUS }}"
           echo "status: ${{ job.status }}"
+          echo "status_cypress_run_2: ${{ job.cypress-run-2.status }}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
 
