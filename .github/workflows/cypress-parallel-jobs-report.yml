@@ -75,7 +75,25 @@ jobs:
         run: |
           echo "status_test: ${{ env.TEST_STATUS }}"
           echo "status: ${{ job.status }}"
-          echo "status_cypress_run_2: ${{ job.cypress-run-2.status }}"
+
+          echo "-------------------------"
+          echo "if condition :"
+          if [contains(
+              ${{ steps.cypress-run-2.conclusion }} ||
+              ${{ steps.cypress-run-2.conclusion }} ||
+              ${{ steps.cypress-run-2.conclusion }}, 
+              'success')]
+              then
+                  echo "success"
+              else
+                  echo "failure"
+              fi
+
+          echo "-------------------------"
+          echo "fake ternary :"
+          echo "${{ 
+          steps.cypress-run-2.conclusion != 'refs/heads/master' 
+          && 'success' || 'failure' }}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
 
