@@ -43,7 +43,8 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-      - id: status_job
+      - name: Save Status
+        id: status_job
         run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
   cypress-run-3:
@@ -67,7 +68,8 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-      - id: status_job
+      - name: Save Status
+        id: status_job
         run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
   generate-report:
