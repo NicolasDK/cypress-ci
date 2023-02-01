@@ -26,7 +26,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-20.04
     outputs:
-      output1: ${{ steps.status_job.outputs.test }}
+      status: ${{ steps.status_job.outputs.status }}
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -44,13 +44,13 @@ jobs:
           path: ./allure-results/
 
       - id: status_job
-        run: echo "test=${{job.status}}" >> $GITHUB_OUTPUT
+        run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
   cypress-run-3:
     environment: dev
     runs-on: ubuntu-20.04
     outputs:
-      output1: ${{ steps.status_job.outputs.test }}
+      status: ${{ steps.status_job.outputs.status }}
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
           path: ./allure-results/
 
       - id: status_job
-        run: echo "test=${{job.status}}" >> $GITHUB_OUTPUT
+        run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
   generate-report:
     if: always()
@@ -79,7 +79,7 @@ jobs:
         shell: bash
         # if: jobs.cypress-run-2 
         run : |
-          echo "somente 3 job: ${{(needs.cypress-run-2.outputs.output1 == 'success' && needs.cypress-run-3.outputs.output1 == 'success') && 'success' || 'failure'}}"
+          echo "somente 3 job: ${{(needs.cypress-run-2.outputs.status == 'success' && needs.cypress-run-3.outputs.status == 'success') && 'success' || 'failure'}}"
 
       # - name: job2 
       #   if: jobs.cypress-run-2
