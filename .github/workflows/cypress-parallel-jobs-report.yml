@@ -74,7 +74,7 @@ jobs:
         shell: bash
         # if: jobs.cypress-run-2 
         run : |
-          echo "somente 1 job: ${{jobs.cypress-run-2}}"
+          echo "somente 1 job: ${{jobs.cypress-run-2.if}}"
 
       # - name: job2 
       #   if: jobs.cypress-run-2
