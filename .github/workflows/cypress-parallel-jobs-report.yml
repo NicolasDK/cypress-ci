@@ -83,7 +83,9 @@ jobs:
 
           echo "-------------------------"
           echo "fake ternary :"
-          echo "${{(needs.cypress-run-2.conclusion || needs.cypress-run-2.conclusion) == 'success' && 'success' || 'failure' }}"
+          echo "${{needs.cypress-run-2.conclusion == 'success' && 'success' || 'failure' }}"
+          echo "${{needs.cypress-run-2.conclusion && needs.cypress-run-2.conclusion == 'success' && 'success' || 'failure' }}"
+          echo "${{(needs.cypress-run-2.conclusion && needs.cypress-run-2.conclusion) == 'success' && 'success' || 'failure' }}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
       # - name: Deploy to GitHub Pages
