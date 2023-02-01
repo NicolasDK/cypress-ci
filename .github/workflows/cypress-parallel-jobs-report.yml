@@ -78,11 +78,7 @@ jobs:
 
           echo "-------------------------"
           echo "if condition :"
-          if [contains(
-              ${{ steps.cypress-run-2.conclusion }} ||
-              ${{ steps.cypress-run-2.conclusion }} ||
-              ${{ steps.cypress-run-2.conclusion }}, 
-              'success')]
+          if [contains(${{ steps.cypress-run-2.conclusion }} || ${{ steps.cypress-run-3.conclusion }}, 'success')]
               then
                   echo "success"
               else
@@ -92,8 +88,7 @@ jobs:
           echo "-------------------------"
           echo "fake ternary :"
           echo "${{ 
-          steps.cypress-run-2.conclusion != 'refs/heads/master' 
-          && 'success' || 'failure' }}"
+          (steps.cypress-run-2.conclusion|| steps.cypress-run-2.conclusion) != 'success' && 'success' || 'failure' }}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
 
