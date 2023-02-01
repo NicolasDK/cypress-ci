@@ -68,7 +68,7 @@ jobs:
           path: ./allure-results/
 
       - id: status_job
-        run: echo "test=hello" >> $GITHUB_OUTPUT
+        run: echo "test=${{job.status}}" >> $GITHUB_OUTPUT
 
   generate-report:
     if: always()
