@@ -30,6 +30,8 @@ jobs:
   cypress-run-2:
     environment: dev
     runs-on: ubuntu-20.04
+    outputs:
+        status: ${{ steps.status.outputs.defined }}
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -46,9 +48,14 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
+      - id: Status Job
+        run: echo "::set-output name=status::${{job.status}}"
+
   cypress-run-3:
     environment: dev
     runs-on: ubuntu-20.04
+    outputs:
+      status: ''
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -65,6 +72,9 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
+      - id: Status Job
+        run: echo "::set-output name=status::${{job.status}}"
+
   generate-report:
     if: always()
     needs: [cypress-run-2, cypress-run-3]
@@ -74,7 +84,7 @@ jobs:
         shell: bash
         # if: jobs.cypress-run-2 
         run : |
-          echo "somente 1 job: ${{jobs.cypress-run-2.if}}"
+          echo "somente 1 job: ${{needs.cypress-run-2.outputs.status}}"
 
       # - name: job2 
       #   if: jobs.cypress-run-2
