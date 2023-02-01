@@ -1,11 +1,6 @@
 name: cypress-run-parallel
 on: [push]
 
-env:
-  TEST_STATUS_1: ""
-  TEST_STATUS_2: ""
-  TEST_STATUS_3: ""
-
 jobs:
 
   # cypress-run-1:
@@ -48,8 +43,8 @@ jobs:
           name: allure-results
           path: ./allure-results/
 
-      - id: status_job
-        run: echo "::set-output name=status::${{job.status}}"
+      - id: cypress-run-2
+        run: echo "status=${{job.status}}" >> $GITHUB_STATE
 
   cypress-run-3:
     environment: dev
@@ -84,7 +79,7 @@ jobs:
         shell: bash
         # if: jobs.cypress-run-2 
         run : |
-          echo "somente 1 job: ${{needs.cypress-run-2.outputs.status}}"
+          echo "somente 3 job: ${{jobs.cypress-run-3.outputs.status}}"
 
       # - name: job2 
       #   if: jobs.cypress-run-2
