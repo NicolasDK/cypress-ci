@@ -50,7 +50,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-20.04
     outputs:
-      status: ''
+      output1: ${{ steps.status_job.outputs.test }}
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
           path: ./allure-results/
 
       - id: status_job
-        run: echo "::set-output name=status::${{job.status}}"
+        run: echo "test=hello" >> $GITHUB_OUTPUT
 
   generate-report:
     if: always()
