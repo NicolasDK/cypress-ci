@@ -44,6 +44,7 @@ jobs:
           path: ./allure-results/
 
       - name: Save Status
+        if: always()
         id: status_job
         run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
@@ -69,6 +70,7 @@ jobs:
           path: ./allure-results/
 
       - name: Save Status
+        if: always()
         id: status_job
         run: echo "status=${{job.status}}" >> $GITHUB_OUTPUT
 
