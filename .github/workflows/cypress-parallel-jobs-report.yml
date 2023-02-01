@@ -1,5 +1,11 @@
 name: cypress-run-parallel
 on: [push]
+
+env:
+  TEST_STATUS_1: ""
+  TEST_STATUS_2: ""
+  TEST_STATUS_3: ""
+
 jobs:
 
   # cypress-run-1:
@@ -67,6 +73,7 @@ jobs:
       - name: Status Job
         shell: bash
         run: |
+          echo "status_test: ${{ env.TEST_STATUS }}"
           echo "status: ${{ job.status }}"
       # - name: Download all workflow run artifacts
       #   uses: actions/download-artifact@v3
